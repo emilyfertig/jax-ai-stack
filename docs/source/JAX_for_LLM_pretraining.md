@@ -111,6 +111,15 @@ import tiktoken
 import time
 ```
 
+```{code-cell}
+import flax
+from pkg_resources import parse_version
+
+if parse_version(flax.__version__) >= parse_version("0.12"):
+  flax.config.update('flax_always_shard_variable', False)
+  print('Disabling Flax variable eager sharding for backward compatibility...')
+```
+
 +++ {"id": "rPyt7MV6prz1"}
 
 ## Define the miniGPT model with Flax and JAX automatic parallelism
